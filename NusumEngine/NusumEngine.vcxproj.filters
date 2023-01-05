@@ -1,22 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Core">
+      <UniqueIdentifier>{658661cd-ab44-47bd-92dd-2b096e6c3a0a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Core\Private">
+      <UniqueIdentifier>{b6edf44f-3791-46ae-a11b-ca9c0744722e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="Core\Public">
+      <UniqueIdentifier>{8dfeef2e-e866-4850-86fa-6f6991125840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Private\Windows">
+      <UniqueIdentifier>{e0b358d2-8a72-4af5-95ea-fd00a077fccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Public\Windows">
+      <UniqueIdentifier>{5b19eb3f-3eaf-4769-8bf8-b31a7bfd3c23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Public\Generic">
+      <UniqueIdentifier>{38908592-2e97-4344-95f8-25898e812059}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Private\Generic">
+      <UniqueIdentifier>{866c485e-126e-4cb4-879e-557cb7843e5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Public\Generic\Logger">
+      <UniqueIdentifier>{05832df5-f6d1-48c0-8547-9b0ec4fafe9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Private\Generic\Logger">
+      <UniqueIdentifier>{3470fbb2-d363-41d4-9709-2b583cf9db0d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainTest.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MainTest.cpp" />
+    <ClCompile Include="WindowsWindow.cpp">
+      <Filter>Core\Private\Windows</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WindowsWindow.h">
+      <Filter>Core\Public\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Core\Public\Generic</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

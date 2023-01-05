@@ -1,0 +1,44 @@
+
+To get available branchs in local repository:
+git branch
+
+To get all branchs in both local and remote repository:
+git branch -a
+
+To check the status of current branch:
+git status
+
+To clone from remote repository:
+git clone <git url>
+
+To clone from remote repository into specified folder:
+git clone <git url> <folder name to clone>
+
+To pull latest changes from remote repository:
+git pull
+
+To commit changes:
+git commit -m "message"
+
+To push committed changes to remote repository:
+git push
+
+To create new branch:
+git checkout -b <new branch name>
+
+To push new branch to remote repository:
+git push -u origin <new branch name>
+
+To Rename current branch name: (branch name change only in local now)
+git branch -m <new branch name>
+To update new branch name in remote repository:
+git branch push : <new branch name>
+
+
+To Rename other branch name: (branch name change only in local now)
+git branch -m <old branch name> <new branch name>
+To update new branch name in remote repository:
+git branch push :<old branch name>  <new branch name>
+
+
+

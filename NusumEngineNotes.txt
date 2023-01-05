@@ -1,0 +1,72 @@
+
+==================================================================================================================
+Start : Nusum Engine Naming conventions:
+==================================================================================================================
+1. File names (.cpp | .c | .h) should be all words first character should be capital letter 
+And numbers and symbols should not be allowed (ex: WindowsPlatform.h).
+
+2. All Templates should starts with 'T' letter.
+
+3. Class | Struct | Enum names should be all words first character should be capital letter
+And numbers and symbols should not be allowed (ex: class WindowsWindow {}).
+
+4. Interfaces (a class contains all virtual methods) - name should starts with 'I'.
+
+5. Constants should be all capital letters and each word seperate with '_'.
+6. variables names should be "camelcase".
+7. method names should be "camelcase".
+8. boolean names should be "camelcase" and startes with 'b' or "is".
+9. Arrays should starts with "arr".
+10. Enum name starts with 'E'.
+11. Enum variables names should be all capital letters and each word seperate with '_'.
+12. Macro name should be all capital letters and each word seperate with '_'.
+
+==================================================================================================================
+End : Nusum Engine Naming conventions:
+==================================================================================================================
+
+
+==================================================================================================================
+Start : createWindow related notes
+==================================================================================================================
+
+Window Procedure flow :
+------------------------
+Event -> PeekMessage/GetMessage -> DispatchMessage -> WindowProc
+
+Window Events:
+---------------
+Window Events are any actions performing on create window like minimize window, maxmize window, close window etc..
+
+
+
+
+
+
+
+==================================================================================================================
+End : createWindow related notes
+==================================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
