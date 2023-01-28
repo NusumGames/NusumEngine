@@ -1,11 +1,11 @@
 #include <iostream>
-#include "WindowsWindow.h"
+#include "NEWindowsWindow.h"
 
-int main() {
-	
+void createWindow()
+{
 	std::cout << "Welcome to NusumEngine!" << std::endl;
 
-	WindowsWindow* wWindow = new WindowsWindow();
+	NEWindowsWindow* wWindow = new NEWindowsWindow();
 	wWindow->initWindow();
 	bool isRunning = true;
 	while (isRunning)
@@ -14,11 +14,19 @@ int main() {
 			std::cout << TEXT("Closing Window") << std::endl;
 			isRunning = false;
 		}
-
 		//Render content
-
 		Sleep(10);
 	}
+}
+
+int main() {
+	
+	createWindow();
+
+	//std::cout << (0x0) << std::endl;
+
+
+	
 
 
 	std::cin.get();

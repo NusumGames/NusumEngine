@@ -1,17 +1,17 @@
 #pragma once
 //#undef UNICODE
 #include <Windows.h>
-#include "Platform.h"
+#include "NEPlatform.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
-class WindowsWindow
+class NEWindowsWindow
 {
 public:
-	WindowsWindow();
-	~WindowsWindow();
-
+	NEWindowsWindow();
+	~NEWindowsWindow();
 	void initWindow();
+	void createPushButton(HWND parentHWnd);
 	bool processMessage();
 
 private:

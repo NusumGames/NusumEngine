@@ -1,4 +1,4 @@
-#include "WindowsWindow.h"
+#include "NEWindowsWindow.h"
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -15,7 +15,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 	return DefWindowProc(hWnd, uMsg, wParam, lParam);
 }
 
-WindowsWindow::WindowsWindow() : hInstance(GetModuleHandle(nullptr))
+NEWindowsWindow::NEWindowsWindow() : hInstance(GetModuleHandle(nullptr))
 {
 	// do nothing for now
 	// but in futur we need to initial windows minimum variables
@@ -23,14 +23,14 @@ WindowsWindow::WindowsWindow() : hInstance(GetModuleHandle(nullptr))
 	// extern "c" HINSTANCE hInstance;
 }
 
-WindowsWindow::~WindowsWindow()
+NEWindowsWindow::~NEWindowsWindow()
 {
 	// in futur i need to write destroy() to destroy window insted of this.
 	// Means in future this would be empty implementation.
 	UnregisterClass(CLASS_NAME, hInstance);
 }
 
-void WindowsWindow::initWindow()
+void NEWindowsWindow::initWindow()
 {
 	WNDCLASSEX wndClass = {};
 	wndClass.lpfnWndProc = WindowProc;
@@ -54,7 +54,7 @@ void WindowsWindow::initWindow()
 
 	DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
-	AdjustWindowRectEx(&rect, style, false, false);
+	AdjustWindowRectEx(&rect, style, false, WS_EX_WINDOWEDGE);
 
 	hWnd = CreateWindowEx(0, 
 		CLASS_NAME, 
@@ -81,7 +81,11 @@ void WindowsWindow::initWindow()
 	ShowWindow(hWnd, SW_SHOW);
 }
 
-bool WindowsWindow::processMessage()
+void NEWindowsWindow::createPushButton(HWND parentHWnd)
+{
+}
+
+bool NEWindowsWindow::processMessage()
 {
 	MSG msg = {};
 	while(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) 

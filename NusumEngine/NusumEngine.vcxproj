@@ -143,12 +143,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="NEGenericApplication.cpp" />
     <ClCompile Include="MainTest.cpp" />
-    <ClCompile Include="WindowsWindow.cpp" />
+    <ClCompile Include="NEWindowsApplication.cpp" />
+    <ClCompile Include="NEWindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Platform.h" />
-    <ClInclude Include="WindowsWindow.h" />
+    <ClInclude Include="..\..\..\..\Users\purna\OneDrive\Desktop\NEGenericWindowDefinitions.h" />
+    <ClInclude Include="NEGenericApplication.h" />
+    <ClInclude Include="NEGenericDataTypes.h" />
+    <ClInclude Include="NEGenericMessageHandler.h" />
+    <ClInclude Include="NEPlatform.h" />
+    <ClInclude Include="NEWindowsApplication.h" />
+    <ClInclude Include="NEWindowsDataTypes.h" />
+    <ClInclude Include="NEWindowsWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
