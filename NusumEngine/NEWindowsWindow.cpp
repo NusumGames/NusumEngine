@@ -1,4 +1,5 @@
 #include "NEWindowsWindow.h"
+#include <iostream>
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
@@ -47,10 +48,11 @@ void NEWindowsWindow::initWindow()
 	int height = 480;
 
 	RECT rect = {0, 0, 0, 0};
-	rect.left = 250;
-	rect.top = 250;
-	rect.right = rect.left + width;
-	rect.bottom = rect.top + height;
+	rect.left = 400; // x position
+	rect.top = 400; // y position
+	rect.right = rect.left + width; // width
+	rect.bottom = rect.top + height; // height
+	
 
 	DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
@@ -69,6 +71,8 @@ void NEWindowsWindow::initWindow()
 		hInstance, 
 		NULL);
 
+	std::cout << "Initial Parent HWND : " << hWnd << std::endl;
+
 	/*
 	if(hWnd == NULL) 
 	{
@@ -83,6 +87,20 @@ void NEWindowsWindow::initWindow()
 
 void NEWindowsWindow::createPushButton(HWND parentHWnd)
 {
+	std::cout << "Parent HWND passing to createButtonWindow : " << parentHWnd << std::endl;
+	HWND hwndButton = CreateWindow(
+		L"BUTTON",  // Predefined class; Unicode assumed 
+		L"OK",      // Button text 
+		WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
+		10,         // x position 
+		10,         // y position 
+		100,        // Button width
+		100,        // Button height
+		parentHWnd,     // Parent window
+		NULL,       // No menu.
+		(HINSTANCE)GetWindowLongPtr(parentHWnd, GWLP_HINSTANCE),
+		NULL);      // Pointer not needed.
+	std::cout << "Button HWND : " << hwndButton << std::endl;
 }
 
 bool NEWindowsWindow::processMessage()
@@ -97,6 +115,11 @@ bool NEWindowsWindow::processMessage()
 		DispatchMessage(&msg);
 	}
 	return true;
+}
+
+HWND NEWindowsWindow::getHWnd() const
+{
+	return hWnd;
 }
 
 

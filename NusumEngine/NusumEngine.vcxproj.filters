@@ -60,7 +60,7 @@
     <ClInclude Include="NEGenericMessageHandler.h">
       <Filter>Runtime\AppCore\Public\Generic</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Users\purna\OneDrive\Desktop\NEGenericWindowDefinitions.h">
+    <ClInclude Include="..\..\..\..\Users\purna\OneDrive\Desktop\NEGenericWindowProperties.h">
       <Filter>Runtime\AppCore\Public\Generic</Filter>
     </ClInclude>
     <ClInclude Include="NEWindowsApplication.h">

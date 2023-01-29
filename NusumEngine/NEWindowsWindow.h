@@ -13,6 +13,7 @@ public:
 	void initWindow();
 	void createPushButton(HWND parentHWnd);
 	bool processMessage();
+	HWND getHWnd() const;
 
 private:
 	HINSTANCE hInstance;

@@ -149,7 +149,7 @@
     <ClCompile Include="NEWindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Users\purna\OneDrive\Desktop\NEGenericWindowDefinitions.h" />
+    <ClInclude Include="..\..\..\..\Users\purna\OneDrive\Desktop\NEGenericWindowProperties.h" />
     <ClInclude Include="NEGenericApplication.h" />
     <ClInclude Include="NEGenericDataTypes.h" />
     <ClInclude Include="NEGenericMessageHandler.h" />
