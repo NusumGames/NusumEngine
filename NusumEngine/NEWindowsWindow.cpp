@@ -31,6 +31,11 @@ NEWindowsWindow::~NEWindowsWindow()
 	UnregisterClass(CLASS_NAME, hInstance);
 }
 
+std::shared_ptr<NEWindowsWindow> NEWindowsWindow::make()
+{
+	return std::shared_ptr<NEWindowsWindow>();
+}
+
 void NEWindowsWindow::initWindow()
 {
 	WNDCLASSEX wndClass = {};
@@ -83,6 +88,12 @@ void NEWindowsWindow::initWindow()
 	*/
 
 	ShowWindow(hWnd, SW_SHOW);
+}
+
+void NEWindowsWindow::initWindow(NEWindowsApplication* const application, std::shared_ptr<NEWindowsWindow> parentWindow, std::shared_ptr<FGenericWindowDefinition> definiton, HINSTANCE hInstance)
+{
+
+
 }
 
 void NEWindowsWindow::createPushButton(HWND parentHWnd)

@@ -1,5 +1,84 @@
 
 ==================================================================================================================
+C++ Data Types
+==================================================================================================================
+Unsigned char must be used for accessing memory as a block of bytes or for small unsigned integers. 
+Signed char must be used for small signed integers.
+Simple char must be used only for ASCII characters and strings.
+
+==================================================================================================================
+
+
+==================================================================================================================
+What is High Precision Mouse Mode
+==================================================================================================================
+
+Need to know 
+
+RAWINPUTDEVICE
+
+// NOTE: Currently has to be created every time due to conflicts with Direct8 Input used by the wx unrealed
+RAWINPUTDEVICE RawInputDevice;
+
+//The HID standard for mouse
+const uint16 StandardMouse = 0x02;
+
+RawInputDevice.usUsagePage = 0x01;
+RawInputDevice.usUsage = StandardMouse;
+RawInputDevice.dwFlags = flags;
+
+// Process input for just the window that requested it.  NOTE: If we pass NULL here events are routed to the window with keyboard focus
+// which is not always known at the HWND level with Slate
+RawInputDevice.hwndTarget = hwnd;
+
+// Register the raw input device
+::RegisterRawInputDevices(&RawInputDevice, 1, sizeof(RAWINPUTDEVICE));
+
+==================================================================================================================
+
+
+==================================================================================================================
+How to get current selected window handler:
+==================================================================================================================
+POINT CursorPos;
+BOOL bGotPoint = ::GetCursorPos(&CursorPos);
+if (bGotPoint)
+{
+// below is the windowHandler selected by cursor
+	HWND hWnd = ::WindowFromPoint(CursorPos);
+}
+==================================================================================================================
+
+
+==================================================================================================================
+WinUser.h
+RIM_TYPEHID
+RIM_TYPEMOUSE
+RIM_TYPEKEYBOARD
+RAWINPUTDEVICE
+RegisterRawInputDevices()
+FindRegisteredDeviceHandle()
+RID_DEVICE_INFO
+==================================================================================================================
+
+
+==================================================================================================================
+Maximum desktop supported size is 65535 * 65535 pizels - This is very important for Mouse Move function calls
+==================================================================================================================
+
+Maximum desktop size is from -32768 to +32767 = 65535 pixels (same for width and height). It is same for 32 or 64 bit apps/systems.
+
+You can easily test this by setting out of that range window position by MoveWindow function. Then use Spy program to get result (or GetWindowRect). Value is truncated to limits of WORD type (two bytes) max and min values.
+
+Also, from message WM_GETMINMAXINFO, provided MINMAXINFO structure has WORD parameters for height & width. WORD can address = -32768 to +32767.
+
+This is well known public secret, funny modern Windows limitation, atavism from “Win32”, from time when 10 monitors using 8K resolution on multiple video adapters were Star Track imagination.
+
+So, maximum possible virtual rectangle, cumulative desktop width is cca 65535 and height is cca 65535. (+/-1 give or take)
+==================================================================================================================
+
+
+==================================================================================================================
 Start : Nusum Engine Naming conventions:
 ==================================================================================================================
 1. File names (.cpp | .c | .h) should be all words first character should be capital letter 

@@ -4,79 +4,127 @@
     <Filter Include="Runtime">
       <UniqueIdentifier>{ff8eb5d2-b1d3-4b15-8ae5-8860ba2f3540}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\AppCore">
+    <Filter Include="Runtime\ApplicationAPI">
       <UniqueIdentifier>{5f494e56-c87b-480e-b646-d3e69df008a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\AppCore\Private">
+    <Filter Include="Runtime\ApplicationAPI\Private">
       <UniqueIdentifier>{0a0b79dd-882c-4c57-9dcb-ae4abcdc10a6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\AppCore\Public">
-      <UniqueIdentifier>{5a4e0548-2db3-4fc4-93b6-eca7dd460343}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Runtime\Core">
-      <UniqueIdentifier>{658661cd-ab44-47bd-92dd-2b096e6c3a0a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Runtime\AppCore\Public\Generic">
-      <UniqueIdentifier>{bf2b2441-f783-442f-81fa-c25d5a62a64a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Runtime\AppCore\Private\Generic">
+    <Filter Include="Runtime\ApplicationAPI\Private\Generic">
       <UniqueIdentifier>{b06ca7da-4827-4e1e-93ad-eb21fa1129f7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\AppCore\Public\Windows">
-      <UniqueIdentifier>{f03fe26c-e333-4b6a-9724-5807bd4882b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Runtime\AppCore\Private\Windows">
+    <Filter Include="Runtime\ApplicationAPI\Private\Windows">
       <UniqueIdentifier>{c0b45048-28f3-4a6b-876d-f11207ef66c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\Core\Public">
+    <Filter Include="Runtime\ApplicationAPI\Public">
+      <UniqueIdentifier>{5a4e0548-2db3-4fc4-93b6-eca7dd460343}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\ApplicationAPI\Public\Generic">
+      <UniqueIdentifier>{bf2b2441-f783-442f-81fa-c25d5a62a64a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\CoreAPI">
+      <UniqueIdentifier>{658661cd-ab44-47bd-92dd-2b096e6c3a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\CoreAPI\Public">
       <UniqueIdentifier>{5c85ef90-24be-4b85-a2ce-a8a6d5105c8d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\Core\Private">
-      <UniqueIdentifier>{61abc6d0-5179-4745-b8d2-3b91c09b1f2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Runtime\Core\Public\GenericPlatform">
+    <Filter Include="Runtime\CoreAPI\Public\GenericPlatform">
       <UniqueIdentifier>{8f64a846-2de7-4890-9382-5126ce62380b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Runtime\Core\Public\WindowsPlatform">
+    <Filter Include="Runtime\CoreAPI\Private">
+      <UniqueIdentifier>{61abc6d0-5179-4745-b8d2-3b91c09b1f2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\InputAPI">
+      <UniqueIdentifier>{8ceb2910-9c5b-419a-8fb6-c7e5a0a3cfa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\InputAPI\Private">
+      <UniqueIdentifier>{3ae4f731-d936-4da0-a988-e35df34212c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\InputAPI\Public">
+      <UniqueIdentifier>{2cc50da9-3c08-4694-a7a8-68b724f8ecd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\CoreAPI\Public\HAL">
+      <UniqueIdentifier>{cf6f2271-fdfa-40e5-b66f-6a2152cf94e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\CoreAPI\Public\NEWindows">
       <UniqueIdentifier>{6f5bdc17-dabc-40e7-8b73-965ca793a3d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\CoreAPI\Public\NEMac">
+      <UniqueIdentifier>{4c033c2f-deb7-4383-984b-280d8a4362c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\ApplicationAPI\Public\NEMac">
+      <UniqueIdentifier>{293147b4-05f0-44e0-8cae-72b3e1da5c1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\ApplicationAPI\Public\Windows">
+      <UniqueIdentifier>{f03fe26c-e333-4b6a-9724-5807bd4882b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\ApplicationAPI\Public\Mac">
+      <UniqueIdentifier>{2731aa62-85ff-4957-b66b-c8c763e9288e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\ApplicationAPI\Private\Mac">
+      <UniqueIdentifier>{7ae3b0d2-155d-453f-8724-5a56587e0748}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\CoreAPI\PCH">
+      <UniqueIdentifier>{4477cf47-e972-40c0-bf36-83e854397ead}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Runtime\PracticeWorkOnly">
+      <UniqueIdentifier>{57683658-7dc6-4faf-827e-a48d4b7c2fe7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainTest.cpp" />
     <ClCompile Include="NEGenericApplication.cpp">
-      <Filter>Runtime\AppCore\Private\Generic</Filter>
+      <Filter>Runtime\ApplicationAPI\Private\Generic</Filter>
     </ClCompile>
     <ClCompile Include="NEWindowsApplication.cpp">
-      <Filter>Runtime\AppCore\Private\Windows</Filter>
+      <Filter>Runtime\ApplicationAPI\Private\Windows</Filter>
     </ClCompile>
     <ClCompile Include="NEWindowsWindow.cpp">
-      <Filter>Runtime\AppCore\Private\Windows</Filter>
+      <Filter>Runtime\ApplicationAPI\Private\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreApiPCH.cpp">
+      <Filter>Runtime\CoreAPI\PCH</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="NEGenericApplication.h">
-      <Filter>Runtime\AppCore\Public\Generic</Filter>
+      <Filter>Runtime\ApplicationAPI\Public\Generic</Filter>
     </ClInclude>
     <ClInclude Include="NEGenericMessageHandler.h">
-      <Filter>Runtime\AppCore\Public\Generic</Filter>
+      <Filter>Runtime\ApplicationAPI\Public\Generic</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Users\purna\OneDrive\Desktop\NEGenericWindowProperties.h">
-      <Filter>Runtime\AppCore\Public\Generic</Filter>
+      <Filter>Runtime\ApplicationAPI\Public\Generic</Filter>
     </ClInclude>
     <ClInclude Include="NEWindowsApplication.h">
-      <Filter>Runtime\AppCore\Public\Windows</Filter>
+      <Filter>Runtime\ApplicationAPI\Public\Windows</Filter>
     </ClInclude>
     <ClInclude Include="NEWindowsWindow.h">
-      <Filter>Runtime\AppCore\Public\Windows</Filter>
+      <Filter>Runtime\ApplicationAPI\Public\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="NEGenericDataTypes.h">
-      <Filter>Runtime\Core\Public\GenericPlatform</Filter>
+    <ClInclude Include="NEGenericPlatform.h">
+      <Filter>Runtime\CoreAPI\Public\GenericPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="NEWindowsPlatform.h">
+      <Filter>Runtime\CoreAPI\Public\NEWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="NEGenericWindowDefinition.h">
+      <Filter>Runtime\ApplicationAPI\Public\Generic</Filter>
+    </ClInclude>
+    <ClInclude Include="InputNameConstants.h">
+      <Filter>Runtime\InputAPI\Public</Filter>
     </ClInclude>
     <ClInclude Include="NEPlatform.h">
-      <Filter>Runtime\Core\Public\GenericPlatform</Filter>
+      <Filter>Runtime\CoreAPI\Public\HAL</Filter>
     </ClInclude>
-    <ClInclude Include="NEWindowsDataTypes.h">
-      <Filter>Runtime\Core\Public\WindowsPlatform</Filter>
+    <ClInclude Include="NEPreprocessorHelper.h">
+      <Filter>Runtime\CoreAPI\Public\HAL</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreApiPCH.h">
+      <Filter>Runtime\CoreAPI\PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="PracticeTest.h">
+      <Filter>Runtime\PracticeWorkOnly</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

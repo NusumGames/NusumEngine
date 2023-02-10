@@ -15,13 +15,13 @@ struct TSelectIntPointerType
 template<typename INT32BIT, typename INT64BIT>
 struct TSelectIntPointerType<INT32BIT, INT64BIT, 4>
 {
-	typedef INT32BIT INTPOINTER
+	typedef INT32BIT INTPOINTER;
 };
 
 template<typename INT32BIT, typename INT64BIT>
 struct TSelectIntPointerType<INT32BIT, INT64BIT, 8>
 {
-	typedef INT64BIT INTPOINTER
+	typedef INT64BIT INTPOINTER;
 };
 
 /*
@@ -29,7 +29,7 @@ NEGenericDataTypes is use to set fixed naming conversions to c++ data types.
 These naming conversions will be used in entire application
 */
 
-struct NEGenericDataTypes
+struct NEGenericPlatform
 {
 	// naming convensions for all unsigned primitive data types
 	typedef unsigned char uint8;

@@ -1,5 +1,12 @@
+#pragma once
+
 #include <iostream>
+
+#include "NEPlatform.h"
+#include "InputNameConstants.h"
 #include "NEWindowsWindow.h"
+#include "PracticeTest.h"
+
 
 void createWindow()
 {
@@ -53,10 +60,33 @@ void getCurrentDisplayResolutionIncludingTaskbarArea()
 	std::cout << "ResolutionX : " << resolutionX << " ResolutionY : " << resolutionY << std::endl;
 }
 
+void mouseEventExample()
+{
+	INPUT input;
+	ZeroMemory(&input, sizeof(input));
+
+	input.type = INPUT_KEYBOARD;
+	input.ki.wVk = 'D'; // 
+}
+
+void printWideChar(WIDECHAR msg)
+{
+	std::cout << msg << std::endl;
+}
+
+//typedef unsigned int 
+
 int main() {
 	
-	createWindow();
+	//createWindow();
 
+	dataTypesComparision();
+
+	//printWideChar(InputNameConstant::STR_ZERO);
+
+	/*uint8 charA = 'A';
+	std::cout << "Char A : " << charA << std::endl;*/
+	
 	//std::cout << (0x0) << std::endl;
 
 	//getCurrentDisplayResolutionIncludingTaskbarArea();
