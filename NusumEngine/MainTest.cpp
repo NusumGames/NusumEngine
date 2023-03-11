@@ -14,7 +14,7 @@ void createWindow()
 
 	NEWindowsWindow* wWindow = new NEWindowsWindow();
 	wWindow->initWindow();
-	wWindow->createPushButton(wWindow->getHWnd());
+	//wWindow->createPushButton(wWindow->getHWnd());
 	bool isRunning = true;
 	while (isRunning)
 	{
@@ -74,18 +74,60 @@ void printWideChar(WIDECHAR msg)
 	std::cout << msg << std::endl;
 }
 
+void bitwiseORAssignementTest()
+{
+	int n = 0;
+	int CONTOL = 1 << 0;
+	int ALT = 1 << 1;
+	int SHIFT = 1 << 2;
+	std::cout << "Before n : " << n << std::endl;
+	std::cout << "Before CONTOL : " << CONTOL << std::endl;
+	std::cout << "Before ALT : " << ALT << std::endl;
+	std::cout << "Before SHIFT : " << SHIFT << std::endl;
+
+	n |= CONTOL;
+	std::cout << "After n with CONTOL : " << n << std::endl;
+	n |= ALT;
+	std::cout << "After n with ALT : " << n << std::endl;
+	n |= SHIFT;
+	std::cout << "After n with SHIFT : " << n << std::endl;
+
+	//0000
+	//0001
+	//---------
+	//0001 = 1
+
+	//0001
+	//0010
+	//---------
+	//0011 = 3
+	//
+	//0011
+	//0100
+	//-------
+	//0111 = 7
+}
+
 //typedef unsigned int 
 
 int main() {
+
+
 	
+
 	//createWindow();
 
-	dataTypesComparision();
+	//TEST::bitwiseORTest(10);
+	//TEST::convertCharToASCII();
+
+	//SHIFT_OPERATOR_TEST::testShiftOperators();
+
+	/*
+	DataTypeTestUtil dataTypeTest;
+	dataTypeTest.dataTypesInformation();
+	*/
 
 	//printWideChar(InputNameConstant::STR_ZERO);
-
-	/*uint8 charA = 'A';
-	std::cout << "Char A : " << charA << std::endl;*/
 	
 	//std::cout << (0x0) << std::endl;
 

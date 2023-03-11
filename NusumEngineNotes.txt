@@ -1,4 +1,225 @@
 
+
+==================================================================================================================
+Character Conversions 
+==================================================================================================================
+Convert char to ASCII:
+-----------------------
+c++ automatically convert character to ASCII charter by assigin char value to int type.
+Ex: 
+1)
+int asciiForSmalla = 'a';
+std::cout << asciiForSmalla << std::endl; // output=97
+2)
+int asciiForCapA = 'A';
+std::cout << asciiForCapA << std::endl; //output=65
+// observed below response with above response. 
+unsigned int charA2 = 'A';
+std::cout << "Char A2 : " << charA2 << std::endl;
+
+
+
+
+==================================================================================================================
+
+
+==================================================================================================================
+Need to clarify on left shift (<<) and right shift (>>) operators
+==================================================================================================================
+
+Refer Beginer Guide for Enums:- 
+https://www.codeproject.com/Articles/13740/The-Beginner-s-Guide-to-Using-Enum-Flags
+
+Refer - https://stackoverflow.com/questions/18841113/c-assigning-enums-explicit-values-using-bit-shifting
+
+C++ Assigning Enums explicit values using bit shifting :
+--------------------------------------------------------
+Question:
+I have been looking at some code from open source projects 
+and noticed that on more than one occassion the values of enums 
+were being assigned through bitshifting a value an incremental number of places. 
+I cannot see any specific reason for doing this, 
+nor can I see an improvement in efficientcy over assigning the values by just incrementing +1.
+
+Regardless this probably makes little sense without some code to demonstrate what has confused me.
+
+Class1:
+enum EventType {
+        NONE                = 0,
+        PUSH                = 1<<0,
+        RELEASE             = 1<<1,
+        DOUBLECLICK         = 1<<2,
+        DRAG                = 1<<3,
+        MOVE                = 1<<4,
+        KEYDOWN             = 1<<5,
+        KEYUP               = 1<<6,
+        FRAME               = 1<<7,
+        RESIZE              = 1<<8,
+        SCROLL              = 1<<9,
+        PEN_PRESSURE        = 1<<10,
+        PEN_ORIENTATION     = 1<<11,
+        PEN_PROXIMITY_ENTER = 1<<12,
+        PEN_PROXIMITY_LEAVE = 1<<13,
+        CLOSE_WINDOW        = 1<<14,
+        QUIT_APPLICATION    = 1<<15,
+        USER                = 1<<16
+    };
+	
+	
+Class2:
+ enum EventType {
+        EVENT_MOUSE_DOUBLE_CLICK = osgGA::GUIEventAdapter::DOUBLECLICK,
+        EVENT_MOUSE_DRAG         = osgGA::GUIEventAdapter::DRAG,
+        EVENT_KEY_DOWN           = osgGA::GUIEventAdapter::KEYDOWN,
+        EVENT_SCROLL             = osgGA::GUIEventAdapter::SCROLL,
+        EVENT_MOUSE_CLICK        = osgGA::GUIEventAdapter::USER << 1,
+        EVENT_MULTI_DRAG         = osgGA::GUIEventAdapter::USER << 2,   // drag with 2 fingers
+        EVENT_MULTI_PINCH        = osgGA::GUIEventAdapter::USER << 3,   // pinch with 2 fingers
+        EVENT_MULTI_TWIST        = osgGA::GUIEventAdapter::USER << 4    // drag 2 fingers in different directions
+	};
+
+
+If I am reading this correctly the EventType::USER has a explict value of 65536 or 10000000000000000 in binary. 
+EVENT_MULTI_TWIST has a value of 1048576 or 100000000000000000000 in binary.
+
+What would be the purpose of assigning enum values this way over just having something like this
+
+enum EventType {
+        NONE                = 0,
+        PUSH                = 1,
+        RELEASE             = 2,
+        DOUBLECLICK         = 3,
+        DRAG                = 4,
+        MOVE                = 5,
+        KEYDOWN             = 6,
+        KEYUP               = 7,
+        FRAME               = 8,
+        RESIZE              = 9,
+        SCROLL              = 10,
+        PEN_PRESSURE        = 11,
+        PEN_ORIENTATION     = 12,
+        PEN_PROXIMITY_ENTER = 13,
+        PEN_PROXIMITY_LEAVE = 14,
+        CLOSE_WINDOW        = 15,
+        QUIT_APPLICATION    = 16,
+        USER                = 17
+    };
+	
+Answer1:
+------------
+The usual reason for doing this is to associate each enum value with a single bit of a final v value, 
+so you can (for one example) encode a number of flags into a single variable.
+
+For example, with a typical 32-bit system, you can encode (obviously enough) 
+32 individual flags into a single 32-bit int (or, preferably, unsigned int).
+
+For example, if you're looking at keys on the keyboard, 
+you could encode "normal" keys like letters and digits into one byte (
+probably using consecutive values, as you've suggested), 
+and "modifier" keys like shift, alt, and control as individual bits. 
+This will allow you (for example) to encode something like control+alt+A as a single value.
+
+Likewise, for mouse messages you could treat the mouse buttons as "modifiers", 
+so you could encode something like dragging the mouse as a single value.
+
+In both cases, the important point of encoding the "modifiers" as individual bits 
+is that this allows you to later retrieve those modifiers unambiguously -- 
+if the right bit is set in the value, then that modifier was use. 
+By contrast, if you just use consecutive numbers, 
+you can't extract individual pieces afterwards. 
+For example, if you have inputs encoded as 1, 2 and 3, 
+you can't tell whether a 3 is intended to indicate an original 
+input corresponding to 3, or inputs of both 1 and 2 at the same time. 
+If, however, you encode the values as 1, 2 and 4, you can combine values, 
+and still decode them, so you can see exactly what input(s) were necessary to produce a particular value.
+
+Answer2:
+------------
+It's one of those cases where, because a thing can be implemented in C++, 
+no mechanism to implement it explicitly is added.
+
+enums provide linker/debugger visible constants and can be scoped into classes and templates, 
+so while it doesn't quite do what the end-user is trying to achieve, 
+and certainly doesn't explicitly do it, the fact that the values in an 
+enum expression don't have to be sequential means that it's considered sufficient 
+for implementing enumerated bit masks.
+
+The resulting values can be used directly in bit masks, such as:
+
+enum {
+	Widget = 1 << 0,  // value b00000001
+	Dingo = 1 << 1,   // value b00000010
+	Herp = 1 << 2     // value b00000100
+};
+
+if (flag & Widget)
+	doWidgetThings();
+if (flag & Dingo)
+	feedTheDog(baby);
+if (flag & Herp)
+	win();
+
+This is capable of accepting 0, 1 or more values in "flag" at once:
+flag = 0; // matches none
+flag = Herp; // matches one flag.
+flag = Widget | Dingo; // sets flag to have both widget and dingo.
+
+Answer3:
+------------
+The reason you would want to do this is because you can use enums defined this way as bitmasks. 
+Given a 32-bit integer, you could have 32 unique characteristics that could all be enabled 
+or disabled using bit-wise combinations of the enumerated values.
+
+For instance, if you wanted to create an event handler that listened for QUIT_APPLICATION 
+and CLOSE_WINDOW in the implementation that uses bit-shifts, 
+you could simply use QUIT_APPLICATION | CLOSE_WINDOW. Each enum is a single bit, 
+and combining them together allows you to easily specify every type of event you 
+wanted in a way that you could not do if they were simply enumerated from 1-16.
+
+Think about the case where you wanted an event handler that listened 
+for PUSH and RELEASE using your proposed "more efficient" enum. 
+If you were to OR these together you would get 3. 
+3 is also the value of DOUBLECLICK in your example. 
+So there is no way to know which events you really wanted; 
+was it the combination of PUSH and RELEASE or 
+was it simply DOUBLECLICK? That is why reserving a single bit for each of the enumerated types is so powerful.
+
+You will often see enumerated values defined like this:
+
+enum EventType {
+    NONE                =       0,
+    PUSH                =     0x1,
+    RELEASE             =     0x2,
+    DOUBLECLICK         =     0x4,
+    DRAG                =     0x8,
+    MOVE                =    0x10,
+    KEYDOWN             =    0x20,
+    KEYUP               =    0x40,
+    FRAME               =    0x80,
+    RESIZE              =   0x100,
+    SCROLL              =   0x200,
+    PEN_PRESSURE        =   0x400,
+    PEN_ORIENTATION     =   0x800,
+    PEN_PROXIMITY_ENTER =  0x1000,
+    PEN_PROXIMITY_LEAVE =  0x2000,
+    CLOSE_WINDOW        =  0x4000,
+    QUIT_APPLICATION    =  0x8000,
+    USER                = 0x10000
+};
+
+Sometimes you will even see things like:
+CLOSE_WINDOW        =  0x4000,
+QUIT_APPLICATION    =  0x8000,
+CLOSE_AND_QUIT      =  CLOSE_WINDOW | QUIT_APPLICATION,
+
+The bitshift notation is just easier to read (for some people), they both do the same thing. 
+Each enumerated value represents a single bit or discrete combination of bits 
+(except for NONE, which represents the absence of all bits).
+
+
+==================================================================================================================
+
+
 ==================================================================================================================
 C++ Data Types
 ==================================================================================================================

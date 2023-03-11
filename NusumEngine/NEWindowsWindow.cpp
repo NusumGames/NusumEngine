@@ -1,8 +1,75 @@
 #include "NEWindowsWindow.h"
 #include <iostream>
+#include <thread>
+
+
+void printKeyCodes(WPARAM wParam)
+{
+	switch (wParam)
+	{
+	case 'a':
+		std::cout << "a : " << wParam << std::endl;
+		break;
+	case 'A':
+		std::cout << "A : " << wParam << std::endl;
+		break;
+	case 'b':
+		std::cout << "b : " << wParam << std::endl;
+		break;
+	case 'B':
+		std::cout << "B : " << wParam << std::endl;
+		break;
+	case '0':
+		std::cout << "0 : " << wParam << std::endl;
+		break;
+	case '1':
+		std::cout << "1 : " << wParam << std::endl;
+		break;
+	case '2':
+		std::cout << "2 : " << wParam << std::endl;
+		break;
+	case '3':
+		std::cout << "3 : " << wParam << std::endl;
+		break;
+	case '4':
+		std::cout << "4 : " << wParam << std::endl;
+		break;
+	case '5':
+		std::cout << "5 : " << wParam << std::endl;
+		break;
+	case '6':
+		std::cout << "6 : " << wParam << std::endl;
+		break;
+	case '7':
+		std::cout << "7 : " << wParam << std::endl;
+		break;
+	case '8':
+		std::cout << "8 : " << wParam << std::endl;
+		break;
+	case '9':
+		std::cout << "9 : " << wParam << std::endl;
+		break;
+	case ')':
+		std::cout << ") : " << wParam << std::endl;
+		break;
+	case ' ':
+		std::cout << "SpaceBar : " << wParam << std::endl;
+		break;
+	case '@':
+		std::cout << "@ : " << wParam << std::endl;
+		break;
+
+	}
+}
+
 
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	//std::cout << "hWnd : " << hWnd << " uMsg : " << uMsg << " wParam : " << wParam << " lParam : " << lParam << std::endl;
+
+
+	printKeyCodes(wParam);
+
 	switch (uMsg)
 	{
 	case WM_CLOSE:
@@ -59,7 +126,7 @@ void NEWindowsWindow::initWindow()
 	rect.bottom = rect.top + height; // height
 	
 
-	DWORD style = WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
+	DWORD style = WS_OVERLAPPEDWINDOW | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
 	AdjustWindowRectEx(&rect, style, false, WS_EX_WINDOWEDGE);
 
