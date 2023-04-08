@@ -11,11 +11,11 @@ struct NEMonitorInfo
 
 enum class EWindowTitleAlignment
 {
-	//  Display window title at the left side of the title bar
+	//  Display window title at the left side of the title bar LEFT
 	LETF, 
-	//  Display window title at the right side of the title bar
+	//  Display window title at the right side of the title bar RIGHT
 	RIGHT, 
-	//  Display window title at the center of the title bar
+	//  Display window title at the center of the title bar CENTER
 	CENTER
 };
 
@@ -29,7 +29,7 @@ struct ModifieKey
 		SHIFT = 1 << 2
 	};
 
-	Key FromBools(const bool isCtrlPressed, const bool isAltPressed, const bool isShiftPressed)
+	static Key FromBools(const bool isCtrlPressed, const bool isAltPressed, const bool isShiftPressed)
 	{
 		Key k = NONE;
 		if (isCtrlPressed)	k = static_cast<Key>(k | CONTOL);
@@ -42,6 +42,10 @@ struct ModifieKey
 
 class NEGenericApplication
 {
+	//ModifieKey::Key key = ModifieKey::FromBools(true, true, true);
+
+
+
 };
 
 
