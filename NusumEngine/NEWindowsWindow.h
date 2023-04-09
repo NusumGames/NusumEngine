@@ -18,6 +18,7 @@ public:
 	void initWindow(); // only testing/practice purpose
 	void initWindow(NEWindowsApplication* const application, std::shared_ptr<NEWindowsWindow> parentWindow, std::shared_ptr<FGenericWindowDefinition> definiton, HINSTANCE hInstance);
 	void createPushButton(HWND parentHWnd);
+	void createTextBox(HWND parentHWnd);
 	bool processMessage();
 	HWND getHWnd() const;
 

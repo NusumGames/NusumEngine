@@ -19,7 +19,7 @@ enum class EWindowTitleAlignment
 	CENTER
 };
 
-struct ModifieKey
+struct    
 {
 	enum Key : uint8
 	{

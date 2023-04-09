@@ -166,7 +166,7 @@ void NEWindowsWindow::initWindow(NEWindowsApplication* const application, std::s
 void NEWindowsWindow::createPushButton(HWND parentHWnd)
 {
 	std::cout << "Parent HWND passing to createButtonWindow : " << parentHWnd << std::endl;
-	HWND hwndButton = CreateWindow(
+	HWND buttonHWnd = CreateWindow(
 		L"BUTTON",  // Predefined class; Unicode assumed 
 		L"OK",      // Button text 
 		WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,  // Styles 
@@ -178,8 +178,26 @@ void NEWindowsWindow::createPushButton(HWND parentHWnd)
 		NULL,       // No menu.
 		(HINSTANCE)GetWindowLongPtr(parentHWnd, GWLP_HINSTANCE),
 		NULL);      // Pointer not needed.
-	std::cout << "Button HWND : " << hwndButton << std::endl;
+	std::cout << "Button HWND : " << buttonHWnd << std::endl;
 }
+
+void NEWindowsWindow::createTextBox(HWND parentHWnd)
+{
+	HWND textBoxHWnd = CreateWindow(
+		TEXT("EDIT"),
+		TEXT("VALUE"),
+		WS_VISIBLE | WS_CHILD | WS_BORDER,
+		40,
+		40,
+		200,
+		25,
+		parentHWnd,
+		(HMENU)NULL,
+		NULL,
+		NULL);
+	std::cout << "Text Box HWND : " << textBoxHWnd << std::endl;
+}
+
 
 bool NEWindowsWindow::processMessage()
 {

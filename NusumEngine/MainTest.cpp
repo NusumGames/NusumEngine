@@ -14,6 +14,7 @@ void createWindow()
 	NEWindowsWindow* wWindow = new NEWindowsWindow();
 	wWindow->initWindow();
 	//wWindow->createPushButton(wWindow->getHWnd());
+	wWindow->createTextBox(wWindow->getHWnd());
 	bool isRunning = true;
 	while (isRunning)
 	{
